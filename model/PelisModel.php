@@ -25,9 +25,9 @@ class PelisModel
     $sentencia->execute(array($descripcion,$pelicula,$puntaje));
   }
 
-  function BorrarPelicula($idPelicula){
+  function BorrarPelicula($idTarea){
     $sentencia = $this->db->prepare( "delete from pelicula where id=?");
-    $sentencia->execute(array($idPelicula));
+    $sentencia->execute(array($idTarea));
   }
 
   function CompletarTarea($id_Pelicula,$pelicula,$descripcion,$puntaje){

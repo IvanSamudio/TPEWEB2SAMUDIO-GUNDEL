@@ -29,8 +29,8 @@ class PelisController
   }
 
   function BorrarPeliculas($param){
-    $this->model->BorrarPelicula($param);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    $this->model->BorrarPelicula($param[0]);
+    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/tabla');
   }
 
   function EditarTarea($param){
@@ -38,7 +38,7 @@ class PelisController
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
     $this->model->CompletarTarea($param[0],$pelicula,$descripcion,$puntaje);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/tabla');
 
   }
 }

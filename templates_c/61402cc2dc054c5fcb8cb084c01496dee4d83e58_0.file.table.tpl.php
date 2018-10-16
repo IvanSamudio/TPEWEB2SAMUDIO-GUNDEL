@@ -1,4 +1,30 @@
-{include file="header.tpl"}
+<?php
+/* Smarty version 3.1.33, created on 2018-10-16 20:22:43
+  from 'C:\xampp\htdocs\Proyecto\TPEWEB2SAMUDIO-ORSINI\templates\table.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5bc62c732f14c1_01126553',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '61402cc2dc054c5fcb8cb084c01496dee4d83e58' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Proyecto\\TPEWEB2SAMUDIO-ORSINI\\templates\\table.tpl',
+      1 => 1539714160,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_5bc62c732f14c1_01126553 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 <body>
   <div class="contenedor">
     <header class="head">
@@ -27,15 +53,27 @@
               <th>PUNTAJE</th>
             </thead>
             <tbody class="tablaCambiable">
-              {foreach from=$Pelicula item=peli}
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Pelicula']->value, 'peli');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['peli']->value) {
+?>
                 <tr>
-                  <td>{$peli['pelicula']}</td>
-                  <td>{$peli['descripcion']}</td>
-                  <td>{$peli['puntaje']}</td>
-                  <td> <a href="borrar/{$peli['id_peliculas']}">BORRAR</a> </td>
-                  <td> <a href="editar/{$peli['id_peliculas']}">EDITAR</a> </td>
+                  <td><?php echo $_smarty_tpl->tpl_vars['peli']->value['pelicula'];?>
+</td>
+                  <td><?php echo $_smarty_tpl->tpl_vars['peli']->value['descripcion'];?>
+</td>
+                  <td><?php echo $_smarty_tpl->tpl_vars['peli']->value['puntaje'];?>
+</td>
+                  <td> <a href="borrar/<?php echo $_smarty_tpl->tpl_vars['peli']->value['id_peliculas'];?>
+">BORRAR</a> </td>
+                  <td> <a href="editar/<?php echo $_smarty_tpl->tpl_vars['peli']->value['id_peliculas'];?>
+">EDITAR</a> </td>
                 </tr>
-              {/foreach}
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
 
           </table>
@@ -70,4 +108,6 @@
       </div>
     </aside>
 
-{include file="footer.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

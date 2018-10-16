@@ -16,9 +16,6 @@ function parseURL($url)
 }
 
 if(isset($_GET['action'])){
-   #$urlData[ACTION] = borrar
-   #$urlData[PARAMS] = [1,2,3,4]
-
     $urlData = parseURL($_GET['action']);
     $action = $urlData[ConfigApp::$ACTION]; //home
     if(array_key_exists($action,ConfigApp::$ACTIONS)){
@@ -33,7 +30,7 @@ if(isset($_GET['action'])){
             echo $controller->$metodo();
         }
     }else{
-      $controller =  new PelisController();
+      $controller =  new HomeController();
       echo $controller->home();
     }
 }
