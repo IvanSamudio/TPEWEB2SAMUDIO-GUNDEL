@@ -7,14 +7,7 @@
 
       <input type="checkbox" name="btn-menu" value="" class="btn-menu" id="btn-menu" >
       <label for="btn-menu"><img src="images/botonNav.jpg" alt="" class="botonNav"> </label>
-      <nav class="menu">
-        <ul>
-          <li><a href="home" class="home">INICIO</a> </li>
-          <li><a href="" class="peliculas">PELICULAS</a> </li>
-          <li><a href="" class="registrate">REGISTRATE</a> </li>
-          <li><a href="tabla" class="tablas">TABLAS</a> </li>
-        </ul>
-      </nav>
+      {include file="navbar.tpl"}
     </header>
 
     <section class="main">
@@ -29,11 +22,11 @@
             <tbody class="tablaCambiable">
               {foreach from=$Pelicula item=peli}
                 <tr>
-                  <td>{$peli['pelicula']}</td>
+                  <td>{$peli['nombre']}</td>
                   <td>{$peli['descripcion']}</td>
-                  <td>{$peli['puntaje']}</td>
+                  <td>{$peli['id_puntaje']}</td>
                   <td> <a href="borrar/{$peli['id_peliculas']}">BORRAR</a> </td>
-                  <td> <a href="editar/{$peli['id_peliculas']}">EDITAR</a> </td>
+                  <td> <a href="mostrarEditar/{$peli['id_peliculas']}">EDITAR</a> </td>
                 </tr>
               {/foreach}
             </tbody>
@@ -45,29 +38,10 @@
             <input type="text" name="pelicula" value="" class="pelicula" placeholder="NOMBRE PELICULA">
             <input type="text" name="descripcion" value="" class="descripcion" placeholder="DESCRIPCION">
             <input type="number" min="0" max="10" name="puntaje" value="" class="puntaje" placeholder="PUNTOS">
+            <input type="submit" name="" value="ENVIAR" class="enviarDatos">
+        </form>
         </div>
-        <input type="submit" name="" value="ENVIAR" class="enviarDatos">
-        <input type="button" name="" value="CREAR 3 ELEMENTOS" class="crear3">
       </div>
     </section>
-
-    <aside class="side">
-      <div class="datosCuriosos">
-        <div class="imagAside">
-
-        </div>
-        <h2>¿SABIAS QUE?</h2>
-        <p>
-          La franquicia de Friday the 13th es una de las más grandes del cine de horror (literalmente,
-          con doce películas que integran la saga por el momento), llevando a su protagonista,
-          Jason Vorhees, en todo tipo de aventuras, incluyendo una película espacial y enfrentamientos
-          con otros grandes del terror.
-        </p>
-        <p>
-          Sí, hoy en día está bastante lejos de causar pesadillas,
-          pero sigue siendo una franquicia icónica
-        </p>
-      </div>
-    </aside>
 
 {include file="footer.tpl"}

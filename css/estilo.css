@@ -179,10 +179,6 @@ th{
   color: #504;
 }
 
-tr{
-  color: #504;
-}
-
 @media screen and (max-width: 800px) {
   .main{
     width: 100%
@@ -220,10 +216,6 @@ tr{
   label .botonNav {
     width: 30px;
     height: 30px;
-  }
-
-  .tabla {
-    width: 100%;
   }
 
 

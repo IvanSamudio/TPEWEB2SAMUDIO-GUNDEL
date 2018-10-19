@@ -25,7 +25,7 @@ class PelisController
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
     $this->model->InsertarPelicula($pelicula,$descripcion,$puntaje);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/tabla');
   }
 
   function BorrarPeliculas($param){
@@ -33,14 +33,23 @@ class PelisController
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/tabla');
   }
 
-  function EditarTarea($param){
+  function EditarPelicula($param){
+      $id_pelicula = $param[0];
+      $pelicula = $this->model->GetPelicula($id_pelicula);
+      $this->view->MostrarParaEditar("Editar Pelicula", $pelicula);
+
+  }
+
+  function guardarEditarPeliculas($param){
     $pelicula = $_POST["pelicula"];
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
-    $this->model->CompletarTarea($param[0],$pelicula,$descripcion,$puntaje);
+    $Tarea = $this->model->Getpelicula($param);
+    $this->model->EditarDatosPelicula($param[0],$pelicula,$descripcion,$puntaje);
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/tabla');
-
   }
+
+
 }
 
  ?>
