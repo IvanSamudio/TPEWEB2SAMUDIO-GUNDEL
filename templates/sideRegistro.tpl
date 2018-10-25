@@ -8,7 +8,10 @@
     </h3>
     <br>
     <BR>
-    <input type="button" value="Enviar datos" name="enviar" class="registrado">
+    <div class="">
+      <h2>{$Message}</h2>
+    </div>
+    <input type="submit" value="LOGIN" name="enviar" class="registrado">
     <input type="reset" value="Restablecer" name="B2">
     </h3>
   </form>

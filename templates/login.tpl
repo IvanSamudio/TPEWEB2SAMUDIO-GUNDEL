@@ -2,7 +2,7 @@
 <body>
   <div class="contenedor">
     <header class="head">
-      {include file="navbar.tpl"}
+      {include file="navbarVisitante.tpl"}
     </header>
 
     <section class="main">

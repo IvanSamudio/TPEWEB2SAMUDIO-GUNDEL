@@ -18,7 +18,6 @@ class LoginController
   }
 
   function login(){
-
     $this->view->mostrarLogin();
 
   }
@@ -33,12 +32,11 @@ class LoginController
       $user = $_POST["usuario"];
       $pass = $_POST["password"];
       $dbUser = $this->model->getUser($user);
-
       if(isset($dbUser)){
           if (password_verify($pass, $dbUser[0]["pass"])){
-              //mostrar lista de tareas
               session_start();
               $_SESSION["User"] = $user;
+              var_dump($_SESSION);
               header(HOME);
           }else{
             $this->view->mostrarLogin("Contraseña incorrecta");

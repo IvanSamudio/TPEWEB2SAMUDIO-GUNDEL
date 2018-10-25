@@ -1,5 +1,5 @@
 <?php
-class PelisModel
+class personajesModel
 {
   private $db;
 
@@ -16,6 +16,13 @@ class PelisModel
 
   function GetPeliculas(){
       $sentencia = $this->db->prepare( "SELECT * from pelicula");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
+  function GetPersonajes(){
+      $sentencia = $this->db->prepare( "SELECT * from personaje");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -50,7 +57,6 @@ class PelisModel
 
 
   }
-
 
 
  ?>

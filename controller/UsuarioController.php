@@ -16,6 +16,7 @@ class UsuarioController extends SecuredController
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
     $this->Titulo = "Lista de Usuario";
+    
   }
 
   function MostrarUsuario(){

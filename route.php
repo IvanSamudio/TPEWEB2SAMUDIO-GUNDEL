@@ -5,6 +5,7 @@ require_once "controller\PelisController.php";
 require_once "controller\UsuarioController.php";
 require_once "controller\LoginController.php";
 require_once "controller\SecuredController.php";
+require_once "controller\controllerVisitante.php";
 
 function parseURL($url)
 {
@@ -29,7 +30,7 @@ if(isset($_GET['action'])){
             echo $controller->$metodo();
         }
     }else{
-      $controller =  new PelisController();
+      $controller =  new controllerVisitante();
       echo $controller->home();
     }
 }
