@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 26, 2018 at 06:07 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-10-2018 a las 18:00:07
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `peliculas`
+-- Base de datos: `peliculas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelicula`
+-- Estructura de tabla para la tabla `pelicula`
 --
 
 CREATE TABLE `pelicula` (
@@ -36,35 +36,37 @@ CREATE TABLE `pelicula` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pelicula`
+-- Volcado de datos para la tabla `pelicula`
 --
 
 INSERT INTO `pelicula` (`id_peliculas`, `nombre`, `descripcion`, `id_puntaje`) VALUES
-(1, 'viernes 13', 'buena', 9);
+(1, 'viernes 13', 'buena', 9),
+(3, 'viernes 13 PART 2', 'BUENA', 9);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personaje`
+-- Estructura de tabla para la tabla `personaje`
 --
 
 CREATE TABLE `personaje` (
   `id_personaje` tinyint(4) NOT NULL,
-  `nombre_personaje` varchar(300) NOT NULL,
+  `nombrePersonaje` varchar(300) NOT NULL,
   `id_pelicula` tinyint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `personaje`
+-- Volcado de datos para la tabla `personaje`
 --
 
-INSERT INTO `personaje` (`id_personaje`, `nombre_personaje`, `id_pelicula`) VALUES
-(1, 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1);
+INSERT INTO `personaje` (`id_personaje`, `nombrePersonaje`, `id_pelicula`) VALUES
+(1, 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1),
+(4, 'Jason 2', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -74,64 +76,64 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`) VALUES
 (1, 'Ivan', '$2y$10$YlR.NTGAYlqVNjORg/A2ceGlwtNv0pudn7pOZ33ID0FF1RAtQLBou');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `pelicula`
+-- Indices de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
   ADD PRIMARY KEY (`id_peliculas`),
   ADD KEY `id_peliculas` (`id_peliculas`);
 
 --
--- Indexes for table `personaje`
+-- Indices de la tabla `personaje`
 --
 ALTER TABLE `personaje`
   ADD PRIMARY KEY (`id_personaje`),
   ADD KEY `id_pelicula` (`id_pelicula`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `pelicula`
+-- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `personaje`
+-- AUTO_INCREMENT de la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `personaje`
+-- Filtros para la tabla `personaje`
 --
 ALTER TABLE `personaje`
   ADD CONSTRAINT `personaje_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id_peliculas`);

@@ -18,13 +18,15 @@
               <th>PELICULA</th>
               <th>DESCRIPCION</th>
               <th>PUNTAJE</th>
+              <th>ID PELICULA</th>
             </thead>
             <tbody class="tablaCambiable">
               {foreach from=$Pelicula item=peli}
                 <tr>
-                    <td><a href="verPersonaje/{$peli['id_peliculas']}">{$peli['nombre']}</a></td>
+                  <td>{$peli['nombre']}</td>
                   <td>{$peli['descripcion']}</td>
                   <td>{$peli['id_puntaje']}</td>
+                  <td>{$peli['id_peliculas']}</td>
                   <td> <a href="borrar/{$peli['id_peliculas']}">BORRAR</a> </td>
                   <td> <a href="mostrarEditar/{$peli['id_peliculas']}">EDITAR</a> </td>
                 </tr>
@@ -33,6 +35,7 @@
 
           </table>
         </div>
+        <a href="verPersonajeUsuario">VER TODOS LOS PERSONAJES</a>
         <br><br><br>
         <form class="formulario" method="post" action="agregar">
             <input type="text" name="pelicula" value="" class="pelicula" placeholder="NOMBRE PELICULA">

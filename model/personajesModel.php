@@ -32,22 +32,28 @@ class personajesModel
   function GetPersonaje($id){
       $sentencia = $this->db->prepare( "SELECT * from personaje where id_pelicula = ?");
       $sentencia->execute(array($id));
-      return $sentencia->fetch(PDO::FETCH_ASSOC);
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function InsertarPelicula($pelicula,$descripcion,$puntaje){
-    $sentencia = $this->db->prepare("INSERT INTO pelicula(nombre,descripcion,id_puntaje) VALUES(?,?,?)");
-    $sentencia->execute(array($pelicula,$descripcion,$puntaje));
+  function GetPersonajeEditar($id){
+      $sentencia = $this->db->prepare( "SELECT * from personaje where id_personaje = ?");
+      $sentencia->execute(array($id));
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function BorrarPelicula($idTarea){
-    $sentencia = $this->db->prepare("DELETE from pelicula where id_Peliculas=?");
-    $sentencia->execute(array($idTarea));
+  function InsertarPersonaje($personaje,$id){
+    $sentencia = $this->db->prepare("INSERT INTO personaje(nombrePersonaje,id_pelicula) VALUES(?,?)");
+    $sentencia->execute(array($personaje,$id));
   }
 
-  function EditarDatosPelicula($id_Pelicula,$pelicula,$descripcion,$puntaje){
-    $sentencia = $this->db->prepare( "UPDATE pelicula SET nombre = ?, descripcion = ?, id_puntaje = ? where id_Peliculas=?");
-    $sentencia->execute(array($pelicula,$descripcion,$puntaje,$id_Pelicula));
+  function borrarPersonaje($id){
+    $sentencia = $this->db->prepare("DELETE from personaje where id_personaje=?");
+    $sentencia->execute(array($id));
+  }
+
+  function EditarDatosPersonaje($nombre,$pelicula,$id){
+    $sentencia = $this->db->prepare( "UPDATE personaje SET nombrePersonaje = ?, id_pelicula = ? where id_personaje=?");
+    $sentencia->execute(array($nombre,$pelicula,$id));
   }
 
 

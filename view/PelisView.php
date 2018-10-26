@@ -7,7 +7,7 @@ class PelisView
     $smarty = new Smarty();
     $smarty->assign('Titulo',$Titulo);
     $smarty->assign('Pelicula',$Pelicula);
-    $smarty->display('templates/table.tpl');
+    $smarty->display('templates/tableUsuario.tpl');
   }
 
   function MostrarParaEditar($Titulo,$pelicula){

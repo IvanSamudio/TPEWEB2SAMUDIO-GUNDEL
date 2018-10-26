@@ -10,20 +10,25 @@ class ConfigApp
     public static $ACTION = 'action';
     public static $PARAMS = 'params';
     public static $ACTIONS = [
-      ''=> 'controllerVisitante#Home',
-      'home'=> 'controllerVisitante#Home',
+      ''=> 'personajesController#Home',
+      'home'=> 'personajesController#Home',
       'homeUsuario'=> 'PelisController#Home',
       'agregar'=> 'PelisController#InsertPelicula',
       'borrar' => 'PelisController#BorrarPeliculas',
       'mostrarEditar' => 'PelisController#EditarPelicula',
       'Editado' => 'PelisController#guardarEditarPeliculas',
+      'EditadoPersonaje' => 'personajesController#guardarEditarPersonaje',
       'tabla' => 'PelisController#Home',
-      'verPersonaje' => 'controllerVisitante#mostrarpersonajes',
-      'tablaVisitante' => 'controllerVisitante#Home',
+      'verPersonaje' => 'personajesController#mostrarpersonajes',
+      'verPersonajeUsuario' => 'personajesController#mostrarPersonajesUsuario',
+      'mostrarEditarPersonaje' => 'personajesController#EditarPersonaje',
+      'tablaVisitante' => 'personajesController#Home',
       'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
       'login'=> 'LoginController#login',
       'logout'=> 'LoginController#logout',
-      'verificarLogin' => 'LoginController#verificarLogin'
+      'verificarLogin' => 'LoginController#verificarLogin',
+      'agregarPersonaje'=> 'personajesController#InsertPersonaje',
+      'borrarPersonaje' => 'personajesController#borrarPersonaje',
 
 
     ];
