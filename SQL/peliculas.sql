@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2018 at 04:19 AM
+-- Generation Time: Oct 26, 2018 at 06:07 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pelicula` (
-  `id_peliculas` tinyint(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `id_peliculas` tinyint(4) NOT NULL,
+  `nombre` varchar(400) NOT NULL,
   `descripcion` varchar(400) NOT NULL,
-  `id_puntaje` int(11) NOT NULL
+  `id_puntaje` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -40,34 +40,26 @@ CREATE TABLE `pelicula` (
 --
 
 INSERT INTO `pelicula` (`id_peliculas`, `nombre`, `descripcion`, `id_puntaje`) VALUES
-(25, 'VIERNES 13', 'BUENA', 9);
+(1, 'viernes 13', 'buena', 9);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `puntaje`
+-- Table structure for table `personaje`
 --
 
-CREATE TABLE `puntaje` (
-  `id_catalogo` int(11) NOT NULL,
-  `critica` varchar(100) NOT NULL
+CREATE TABLE `personaje` (
+  `id_personaje` tinyint(4) NOT NULL,
+  `nombre_personaje` varchar(300) NOT NULL,
+  `id_pelicula` tinyint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `puntaje`
+-- Dumping data for table `personaje`
 --
 
-INSERT INTO `puntaje` (`id_catalogo`, `critica`) VALUES
-(1, 'PÉSIMA'),
-(2, 'MALA'),
-(3, 'MALA'),
-(4, 'MALA'),
-(5, 'REGULAR'),
-(6, 'BUENA'),
-(7, 'BUENA'),
-(8, 'BUENA'),
-(9, 'BUENA'),
-(10, 'EXCELENTE');
+INSERT INTO `personaje` (`id_personaje`, `nombre_personaje`, `id_pelicula`) VALUES
+(1, 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -76,10 +68,17 @@ INSERT INTO `puntaje` (`id_catalogo`, `critica`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `nombreUsuario` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL
+  `id_usuario` tinyint(4) NOT NULL,
+  `nombreUsuario` varchar(300) NOT NULL,
+  `pass` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`) VALUES
+(1, 'Ivan', '$2y$10$YlR.NTGAYlqVNjORg/A2ceGlwtNv0pudn7pOZ33ID0FF1RAtQLBou');
 
 --
 -- Indexes for dumped tables
@@ -90,13 +89,14 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `pelicula`
   ADD PRIMARY KEY (`id_peliculas`),
-  ADD KEY `id_puntaje` (`id_puntaje`);
+  ADD KEY `id_peliculas` (`id_peliculas`);
 
 --
--- Indexes for table `puntaje`
+-- Indexes for table `personaje`
 --
-ALTER TABLE `puntaje`
-  ADD PRIMARY KEY (`id_catalogo`);
+ALTER TABLE `personaje`
+  ADD PRIMARY KEY (`id_personaje`),
+  ADD KEY `id_pelicula` (`id_pelicula`);
 
 --
 -- Indexes for table `usuario`
@@ -112,29 +112,29 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_peliculas` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `puntaje`
+-- AUTO_INCREMENT for table `personaje`
 --
-ALTER TABLE `puntaje`
-  MODIFY `id_catalogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `personaje`
+  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `pelicula`
+-- Constraints for table `personaje`
 --
-ALTER TABLE `pelicula`
-  ADD CONSTRAINT `pelicula_ibfk_1` FOREIGN KEY (`id_puntaje`) REFERENCES `puntaje` (`id_catalogo`);
+ALTER TABLE `personaje`
+  ADD CONSTRAINT `personaje_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id_peliculas`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
