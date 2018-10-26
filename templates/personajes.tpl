@@ -18,14 +18,11 @@
               <th>Personajes</th>
             </thead>
             <tbody class="tablaCambiable">
-              {foreach from=$Personaje item=personajes}
                 <tr>
-                  <td>{$personajes['nombre_personaje']}</td>
-                  <td>{$personajes['id_pelicula']}</td>
+                  <td>{$Personaje['nombre_personaje']}</td>
+                  <td>{$Personaje['id_pelicula']}</td>
                 </tr>
-              {/foreach}
             </tbody>
-
           </table>
         </div>
         <br><br><br>

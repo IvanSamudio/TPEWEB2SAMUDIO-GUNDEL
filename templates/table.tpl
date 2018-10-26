@@ -7,7 +7,7 @@
 
       <input type="checkbox" name="btn-menu" value="" class="btn-menu" id="btn-menu" >
       <label for="btn-menu"><img src="images/botonNav.jpg" alt="" class="botonNav"> </label>
-      {include file="navbar.tpl"}
+      {include file="navbarUsuario.tpl"}
     </header>
 
     <section class="main">
@@ -22,7 +22,7 @@
             <tbody class="tablaCambiable">
               {foreach from=$Pelicula item=peli}
                 <tr>
-                  <td>{$peli['nombre']}</td>
+                    <td><a href="verPersonaje/{$peli['id_peliculas']}">{$peli['nombre']}</a></td>
                   <td>{$peli['descripcion']}</td>
                   <td>{$peli['id_puntaje']}</td>
                   <td> <a href="borrar/{$peli['id_peliculas']}">BORRAR</a> </td>

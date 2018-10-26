@@ -28,12 +28,12 @@ class PelisController extends SecuredController
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
     $this->model->InsertarPelicula($pelicula,$descripcion,$puntaje);
-    header(HOME);
+    header(HOMEUSUARIO);
   }
 
   function BorrarPeliculas($param){
     $this->model->BorrarPelicula($param[0]);
-    header(HOME);
+    header(HOMEUSUARIO);
   }
 
   function EditarPelicula($param){
@@ -43,13 +43,13 @@ class PelisController extends SecuredController
 
   }
 
-  function guardarEditarPeliculas($param){
-    $pelicula = $_POST["pelicula"];
+  function guardarEditarPeliculas(){
+    $nombre = $_POST["pelicula"];
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
-    $Tarea = $this->model->Getpelicula($param);
-    $this->model->EditarDatosPelicula($param[0],$pelicula,$descripcion,$puntaje);
-    header(HOME);
+    $id = $_POST["id"];
+    $this->model->EditarDatosPelicula($nombre,$descripcion,$puntaje,$id);
+    header(HOMEUSUARIO);
   }
 
 

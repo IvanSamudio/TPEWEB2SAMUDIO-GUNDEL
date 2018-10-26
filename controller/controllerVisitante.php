@@ -20,10 +20,11 @@ class controllerVisitante
       $this->view->Mostrar($this->Titulo, $Pelicula);
     }
 
-  function mostrarPersonajes(){
-        $Personaje = $this->model->GetPersonajes();
-        var_dump($Personaje);
+  function mostrarPersonajes($param){
+        $id_pelicula = $param[0];
+        $Personaje = $this->model->GetPersonaje($id_pelicula);
         $this->view->mostrarPersonajes($this->Titulo, $Personaje);
+
     }
 
 }

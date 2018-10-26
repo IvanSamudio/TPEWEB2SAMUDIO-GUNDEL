@@ -1,6 +1,7 @@
 <?php
 
 define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+define('HOMEUSUARIO', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]).'/homeUsuario');
 define('LOGIN', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/login');
 define('LOGOUT', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/logout');
 
@@ -11,15 +12,14 @@ class ConfigApp
     public static $ACTIONS = [
       ''=> 'controllerVisitante#Home',
       'home'=> 'controllerVisitante#Home',
-      'verPersonaje' => 'controllerVisitante#mostrarpersonajes',
-      'home'=> 'PelisController#Home',
+      'homeUsuario'=> 'PelisController#Home',
       'agregar'=> 'PelisController#InsertPelicula',
       'borrar' => 'PelisController#BorrarPeliculas',
       'mostrarEditar' => 'PelisController#EditarPelicula',
-      'editar' => 'PelisController#EditarPeliculas',
+      'Editado' => 'PelisController#guardarEditarPeliculas',
       'tabla' => 'PelisController#Home',
+      'verPersonaje' => 'controllerVisitante#mostrarpersonajes',
       'tablaVisitante' => 'controllerVisitante#Home',
-      'loginPagina'=> 'LoginController#login',
       'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
       'login'=> 'LoginController#login',
       'logout'=> 'LoginController#logout',

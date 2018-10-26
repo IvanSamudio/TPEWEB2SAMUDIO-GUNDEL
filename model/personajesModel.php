@@ -29,15 +29,10 @@ class personajesModel
   }
 
 
-  function GetPelicula($id){
-
-
-      $sentencia = $this->db->prepare( "SELECT * from pelicula where id_peliculas = ?");
+  function GetPersonaje($id){
+      $sentencia = $this->db->prepare( "SELECT * from personaje where id_pelicula = ?");
       $sentencia->execute(array($id));
-
-
       return $sentencia->fetch(PDO::FETCH_ASSOC);
-
   }
 
   function InsertarPelicula($pelicula,$descripcion,$puntaje){

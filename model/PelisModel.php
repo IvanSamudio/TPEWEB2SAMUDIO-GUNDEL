@@ -23,12 +23,8 @@ class PelisModel
 
 
   function GetPelicula($id){
-
-
       $sentencia = $this->db->prepare( "SELECT * from pelicula where id_peliculas = ?");
       $sentencia->execute(array($id));
-
-
       return $sentencia->fetch(PDO::FETCH_ASSOC);
 
   }
@@ -43,9 +39,9 @@ class PelisModel
     $sentencia->execute(array($idTarea));
   }
 
-  function EditarDatosPelicula($id_Pelicula,$pelicula,$descripcion,$puntaje){
-    $sentencia = $this->db->prepare( "UPDATE pelicula SET nombre = ?, descripcion = ?, id_puntaje = ? where id_Peliculas=?");
-    $sentencia->execute(array($pelicula,$descripcion,$puntaje,$id_Pelicula));
+  function EditarDatosPelicula($nombre,$descripcion,$puntaje,$id){
+    $sentencia = $this->db->prepare( "update pelicula set nombre = ?, descripcion = ?, id_puntaje = ? where id_peliculas=?");
+    $sentencia->execute(array($nombre,$descripcion,$puntaje,$id));
   }
 
 
