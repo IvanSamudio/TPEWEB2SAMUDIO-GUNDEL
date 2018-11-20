@@ -7,7 +7,7 @@
 
       <input type="checkbox" name="btn-menu" value="" class="btn-menu" id="btn-menu" >
       <label for="btn-menu"><img src="images/botonNav.jpg" alt="" class="botonNav"> </label>
-      {include file="navbarVisitante.tpl"}
+      {include file="navbarUsuario.tpl"}
     </header>
 
     <section class="main">
@@ -15,14 +15,13 @@
         <div class="tabla">
           <table>
             <thead>
-              <th>Personajes</th>
-              <th>Id Pelicula</th>
+              <th>PERSONAJES</th>
+              <th colspan="2">ACCIONES</th>
             </thead>
             <tbody class="tablaCambiable">
               {foreach from=$Personaje item=personajes}
                 <tr>
                   <td>{$personajes['nombrePersonaje']}</td>
-                  <td>{$personajes['id_pelicula']}</td>
                   <td> <a href="borrarPersonaje/{$personajes['id_personaje']}">BORRAR</a> </td>
                   <td> <a href="mostrarEditarPersonaje/{$personajes['id_personaje']}">EDITAR</a> </td>
                 </tr>
@@ -33,7 +32,16 @@
         <br><br><br>
         <form class="formulario" method="post" action="agregarPersonaje">
             <input type="text" name="personaje" value="" class="pelicula" placeholder="NOMBRE PERSONAJE">
-            <input type="number" name="id" value="" class="pelicula" placeholder="ID DE PELICULA">
+
+
+            <select class="opciones" name="id">
+                {foreach from=$peliculas item=pelicula}
+                    <option  value="{$pelicula['id_peliculas']}">{$pelicula['nombre']}</option>
+              {/foreach}
+
+            </select>
+
+
             <input type="submit" name="" value="ENVIAR" class="enviarDatos">
         </form>
         </div>

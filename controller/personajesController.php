@@ -28,7 +28,8 @@ class personajesController
 
   function mostrarPersonajesUsuario(){
           $Personaje = $this->model->GetPersonajes();
-          $this->view->mostrarPersonajeUsuario($this->Titulo, $Personaje);
+          $peliculas = $this->model->GetPeliculas();
+          $this->view->mostrarPersonajeUsuario($this->Titulo, $Personaje, $peliculas);
     }
 
 

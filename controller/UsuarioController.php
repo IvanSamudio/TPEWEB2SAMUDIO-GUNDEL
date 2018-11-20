@@ -16,7 +16,7 @@ class UsuarioController extends SecuredController
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
     $this->Titulo = "Lista de Usuario";
-    
+
   }
 
   function MostrarUsuario(){
@@ -29,10 +29,7 @@ class UsuarioController extends SecuredController
   function InsertUsuario(){
     $nombre = $_POST["nombre"];
     $pass = $_POST["pass"];
-
-
     $this->model->InsertarUsuario($nombre,$pass);
-
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
   }
 

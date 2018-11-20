@@ -18,7 +18,6 @@ class PelisModel
       $sentencia = $this->db->prepare( "SELECT * from pelicula");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
   }
 
 
@@ -32,6 +31,9 @@ class PelisModel
   function InsertarPelicula($pelicula,$descripcion,$puntaje){
     $sentencia = $this->db->prepare("INSERT INTO pelicula(nombre,descripcion,id_puntaje) VALUES(?,?,?)");
     $sentencia->execute(array($pelicula,$descripcion,$puntaje));
+    $lastItem= $this->db->lastInsertId();
+    return $this->GetPelicula($lastItem);
+
   }
 
   function BorrarPelicula($idTarea){

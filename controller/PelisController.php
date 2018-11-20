@@ -43,11 +43,11 @@ class PelisController extends SecuredController
 
   }
 
-  function guardarEditarPeliculas(){
+  function guardarEditarPeliculas($param){
     $nombre = $_POST["pelicula"];
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
-    $id = $_POST["id"];
+    $id = $param[0];
     $this->model->EditarDatosPelicula($nombre,$descripcion,$puntaje,$id);
     header(HOMEUSUARIO);
   }

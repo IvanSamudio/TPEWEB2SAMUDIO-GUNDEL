@@ -1,11 +1,9 @@
 <?php
 
 require_once "config/ConfigApp.php";
-require_once "controller\PelisController.php";
-require_once "controller\UsuarioController.php";
-require_once "controller\LoginController.php";
-require_once "controller\SecuredController.php";
-require_once "controller\personajesController.php";
+require_once "controller/pelisController.php";
+require_once "controller/personajesController.php";
+require_once "controller/loginController.php";
 
 function parseURL($url)
 {

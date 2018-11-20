@@ -18,11 +18,12 @@ class visitanteView
     $smarty->display('templates/personajes.tpl');
   }
 
-  function mostrarPersonajeUsuario($Titulo,$personaje)
+  function mostrarPersonajeUsuario($Titulo,$personaje,$peliculas)
   {
     $smarty = new Smarty();
     $smarty->assign('Titulo',$Titulo);
     $smarty->assign('Personaje',$personaje);
+    $smarty->assign('peliculas',$peliculas);
     $smarty->display('templates/personajesUsuario.tpl');
   }
 

@@ -18,7 +18,7 @@
               <th>PELICULA</th>
               <th>DESCRIPCION</th>
               <th>PUNTAJE</th>
-              <th>ID PELICULA</th>
+              <th colspan="2">ACCIONES</th>
             </thead>
             <tbody class="tablaCambiable">
               {foreach from=$Pelicula item=peli}
@@ -26,7 +26,6 @@
                   <td>{$peli['nombre']}</td>
                   <td>{$peli['descripcion']}</td>
                   <td>{$peli['id_puntaje']}</td>
-                  <td>{$peli['id_peliculas']}</td>
                   <td> <a href="borrar/{$peli['id_peliculas']}">BORRAR</a> </td>
                   <td> <a href="mostrarEditar/{$peli['id_peliculas']}">EDITAR</a> </td>
                 </tr>

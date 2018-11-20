@@ -16,7 +16,10 @@ body{
 
 }
 
-
+a{
+  text-decoration: none;
+  color: #8B008B;
+}
 
 .contenedor{
   width: 80%;
@@ -32,7 +35,7 @@ header {
   border-radius: 5px;
 }
 
-.sectionMainContenido {
+.sectionMainContenido,.comments {
   color: #fff;
 }
 
@@ -145,7 +148,7 @@ header label:hover{
 .viernes13-2,.viernes13-3,.viernes13-4,.viernes13-5,.viernes13-6,.viernes13-7,.viernes13-8,.viernes13-9,.viernes13-10,.viernes13-11,.viernes13-12{
   display: none;
 }
-.anterior,.siguiente,.mainRegistro input,.contenidoTabla input,.main input{
+.anterior,.siguiente,.mainRegistro input,.contenidoTabla input,.main input,.opciones {
   border: 1px solid #fff;
   padding: 15px 30px;
   border-radius: 10px;
@@ -180,7 +183,7 @@ thead th,td{
 }
 
 th{
-  color: #504;
+  color: #9932CC;
 }
 
 @media screen and (max-width: 800px) {
