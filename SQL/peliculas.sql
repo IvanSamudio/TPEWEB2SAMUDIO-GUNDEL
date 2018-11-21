@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2018 a las 18:00:07
--- Versión del servidor: 10.1.33-MariaDB
--- Versión de PHP: 7.2.6
+-- Tiempo de generación: 21-11-2018 a las 17:33:33
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `peliculas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id_peliculas` tinyint(4) NOT NULL,
+  `id_usuario` tinyint(4) NOT NULL,
+  `id_comentario` tinyint(4) NOT NULL,
+  `comentario` text NOT NULL,
+  `puntaje` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id_peliculas`, `id_usuario`, `id_comentario`, `comentario`, `puntaje`) VALUES
+(1, 1, 1, 'BIEN NENE', 4),
+(5, 1, 3, 'PEDRO', 4),
+(7, 1, 4, 'BIEN PENDEJO', 3);
 
 -- --------------------------------------------------------
 
@@ -41,7 +64,12 @@ CREATE TABLE `pelicula` (
 
 INSERT INTO `pelicula` (`id_peliculas`, `nombre`, `descripcion`, `id_puntaje`) VALUES
 (1, 'viernes 13', 'buena', 9),
-(3, 'viernes 13 PART 2', 'BUENA', 9);
+(4, 'Viernes 13 part 2', 'Buena', 9),
+(5, 'Viernes 13 part 3', 'Buena', 7),
+(6, 'Viernes 13 part 4', 'Buena', 8),
+(7, 'Viernes 13 part 5', 'Buena', 9),
+(9, 'Viernes 13 part 5', 'Buena', 9),
+(10, 'viernes feriado', 'EXCELENTE', 10);
 
 -- --------------------------------------------------------
 
@@ -61,7 +89,7 @@ CREATE TABLE `personaje` (
 
 INSERT INTO `personaje` (`id_personaje`, `nombrePersonaje`, `id_pelicula`) VALUES
 (1, 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1),
-(4, 'Jason 2', 3);
+(2, 'pepe', 10);
 
 -- --------------------------------------------------------
 
@@ -85,6 +113,14 @@ INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_peliculas` (`id_peliculas`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `pelicula`
@@ -111,16 +147,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -131,6 +173,13 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_peliculas`) REFERENCES `pelicula` (`id_peliculas`),
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `personaje`
