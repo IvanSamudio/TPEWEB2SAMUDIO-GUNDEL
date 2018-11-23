@@ -11,9 +11,9 @@
     </header>
 
     <section class="main">
-      <form class="formulario" method="post" action="registrate">
+      <form class="formulario" method="post" action="agregarUsuario">
           <input type="text" name="nombre" value="" class="pelicula" placeholder="NOMBRE USUARIO">
-          <input type="password" name="pass" value="" class="descripcion" placeholder="CONTRASEÑA">
+          <input type="password" name="pass" value="" class="descripcion" placeholder="CONTRASEÑA" max="8">
           <input type="submit" name="" value="ENVIAR" class="enviarDatos">
       </form>
     </section>

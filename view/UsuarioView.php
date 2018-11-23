@@ -13,6 +13,12 @@ class UsuarioView
     //$smarty->debugging = true;
     $smarty->display('templates/MostrarUsuarios.tpl');
   }
+
+  function MostrarRegistrarse($Titulo){
+    $smarty = new Smarty();
+    $smarty->assign('Titulo',$Titulo);
+    $smarty->display('templates/registro.tpl');
+  }
 }
 
  ?>

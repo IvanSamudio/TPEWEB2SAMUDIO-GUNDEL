@@ -17,9 +17,10 @@ class PelisController extends SecuredController
     $this->Titulo = "JASON WIKI";
   }
 
-  function Home(){
+  function mostrarUsuario(){
       $Pelicula = $this->model->GetPeliculas();
-      $this->view->Mostrar($this->Titulo, $Pelicula);
+      $Personaje = $this->model->GetPersonajes();
+      $this->view->MostrarUsuario($this->Titulo, $Pelicula,$Personaje);
     }
 
 
@@ -51,6 +52,41 @@ class PelisController extends SecuredController
     $this->model->EditarDatosPelicula($nombre,$descripcion,$puntaje,$id);
     header(HOMEUSUARIO);
   }
+
+  function mostrarPersonajesUsuario($param = null){
+          $id_pelicula = $param[0];
+          $Personaje = $this->model->GetPersonaje($id_pelicula);
+          $peliculas = $this->model->GetPeliculas();
+          $this->view->mostrarPersonajeUsuario($this->Titulo, $Personaje, $peliculas,$id_pelicula);
+    }
+
+
+    function InsertPersonaje(){
+      $personaje = $_POST["personaje"];
+      $id = $_POST["id"];
+      $this->model->InsertarPersonaje($personaje,$id);
+      header(HOMEUSUARIO);
+    }
+
+    function borrarPersonaje($param){
+      $this->model->borrarPersonaje($param[0]);
+      header(HOMEUSUARIO);
+    }
+
+    function EditarPersonaje($param){
+        $id_personaje = $param[0];
+        $personaje = $this->model->GetPersonajeEditar($id_personaje);
+        $this->view->MostrarParaEditarPersonajes("Editar Pelicula", $personaje);
+
+    }
+
+    function guardarEditarPersonaje(){
+      $nombre = $_POST["nombre"];
+      $pelicula = $_POST["id_pelicula"];
+      $id = $_POST["id"];
+      $this->model->EditarDatosPersonaje($nombre,$pelicula,$id);
+      header(HOMEUSUARIO);
+    }
 
 
 }

@@ -3,7 +3,7 @@ require_once  "./view/UsuarioView.php";
 require_once  "./model/UsuarioModel.php";
 require_once  "./Controller/SecuredController.php";
 
-class UsuarioController extends SecuredController
+class UsuarioController
 {
   private $view;
   private $model;
@@ -11,8 +11,6 @@ class UsuarioController extends SecuredController
 
   function __construct()
   {
-    parent::__construct();
-
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
     $this->Titulo = "Lista de Usuario";
@@ -24,13 +22,18 @@ class UsuarioController extends SecuredController
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }
 
+  function Registro(){
+    $Titulo='Registro';
+    $this->view->MostrarRegistrarse($Titulo);
+  }
+
 
 
   function InsertUsuario(){
     $nombre = $_POST["nombre"];
-    $pass = $_POST["pass"];
+    $pass = password_hash($_POST["pass"],PASSWORD_DEFAULT);;
     $this->model->InsertarUsuario($nombre,$pass);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    HEADER(LOGIN);
   }
 
 }

@@ -12,10 +12,3 @@
     <aside class="side">
 
     </aside>
-
-    <footer class="footer">
-      {include file="footerMain.tpl"}
-    </footer>
-  </div>
-  <!-- //<script src="js/main.js" charset="utf-8"></script> -->
-</body>

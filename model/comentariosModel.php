@@ -22,9 +22,9 @@ class comentariosModel
 
 
   function GetComentario($id){
-      $sentencia = $this->db->prepare( "SELECT * from comentario where id_comentario = ?");
+      $sentencia = $this->db->prepare( "SELECT * from comentario where id_peliculas = ?");
       $sentencia->execute(array($id));
-      return $sentencia->fetch(PDO::FETCH_ASSOC);
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
   }
 

@@ -1,6 +1,26 @@
 <h1>{{titulo}}</h1>
-{{#each comentarios}}
-<ul>
-  <li>{{comentario}}</li>
-</ul>
-{{/each}}
+
+<table>
+  <thead>
+    <th>USUARIO</th>
+    <th>COMENTARIO</th>
+    <th>PUNTAJE</th>
+    <th>id peli</th>
+    <th>id personaje</th>
+    <th colspan="2" >ACCIONES</th>
+
+  </thead>
+  <tbody>
+    {{#each comentarios}}
+    <tr>
+      <td>{{id_usuario}}</td>
+      <td>{{comentario}}</td>
+      <td>{{puntaje}}</td>
+      <td>{{id_peliculas}}</td>
+      <td>{{id_comentario}}</td>
+      <td><input type="button" name="" class="borrarComentario" value="BORRAR" id="{{id_comentario}}"> </td>
+      <td><input type="button" name="" class="editarComentario" value="EDITAR" id="{{id_comentario}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

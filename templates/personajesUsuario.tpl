@@ -37,13 +37,26 @@
             <select class="opciones" name="id">
                 {foreach from=$peliculas item=pelicula}
                     <option  value="{$pelicula['id_peliculas']}">{$pelicula['nombre']}</option>
+                    {$numero=$pelicula['id_peliculas']}
               {/foreach}
-
             </select>
 
 
             <input type="submit" name="" value="ENVIAR" class="enviarDatos">
         </form>
+        <br>
+        <div class="comments">
+
+        </div>
+        <br>
+        <form class="formulario">
+          <input type="text" class="comentario" value="">
+          <input type="number" class="puntaje" value="" max="5">
+          <input type="button" class="enviar" value="ENVIAR" id="{$id}">
+          <input type="button" class="enviar3" value="ENVIAR 3 COMENTARIOS" id="{$id}">
+        </form>
+
+
         </div>
       </div>
     </section>
