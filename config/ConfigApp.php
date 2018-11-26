@@ -15,6 +15,7 @@ class ConfigApp
       'homeUsuario'=> 'PelisController#mostrarUsuario',
       'agregar'=> 'PelisController#InsertPelicula',
       'borrar' => 'PelisController#BorrarPeliculas',
+      'borrarImagen' => 'PelisController#borrarImagen',
       'mostrarEditar' => 'PelisController#EditarPelicula',
       'Editado' => 'PelisController#guardarEditarPeliculas',
       'EditadoPersonaje' => 'PelisController#guardarEditarPersonaje',
@@ -24,13 +25,16 @@ class ConfigApp
       'mostrarEditarPersonaje' => 'PelisController#EditarPersonaje',
       'tablaVisitante' => 'visitanteController#mostrarVisitante',
       'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
-      'registrate'=> 'UsuarioController#Registro',
+      'registrate'=> 'visitanteController#Registro',
       'agregarUsuario'=> 'UsuarioController#InsertUsuario',
       'login'=> 'LoginController#login',
       'logout'=> 'LoginController#logout',
       'verificarLogin' => 'LoginController#verificarLogin',
       'agregarPersonaje'=> 'PelisController#InsertPersonaje',
       'borrarPersonaje' => 'PelisController#borrarPersonaje',
+      'filtrar'=> 'visitanteController#filtrarPeliculas',
+      'InsertImagen'=> 'PelisController#InsertImagen',
+      'usuarios'=> 'UsuarioController#MostrarUsuario',
 
 
 

@@ -26,17 +26,31 @@ class ApiController extends Api{
     }
   }
 
-  function DeleteComentarios($param = null){
+  function DeleteTarea($param = null){
     if(count($param) == 1){
-        $id = $param[0];
-        $datos =  $this->model->BorrarComentario($id);
-        if($datos == false){
-          return $this->json_response($datos, 500);
+        $id_tarea = $param[0];
+        $r =  $this->model->BorrarTarea($id_tarea);
+        if($r == false){
+          return $this->json_response($r, 300);
         }
 
-        return $this->json_response($datos, 200);
+        return $this->json_response($r, 200);
     }else{
-      return  $this->json_response("No task specified", 500);
+      return  $this->json_response("No task specified", 300);
+    }
+  }
+
+  function DeleteComentarios($param = null){
+    if(count($param) == 1){
+        $id_tarea = $param[0];
+        $r =  $this->model->BorrarComentario($id_tarea);
+        if($r == false){
+          return $this->json_response($r, 300);
+        }
+
+        return $this->json_response($r, 200);
+    }else{
+      return  $this->json_response("No task specified", 300);
     }
   }
 

@@ -25,20 +25,43 @@ class PelisModel
       $sentencia = $this->db->prepare( "SELECT * from pelicula where id_peliculas = ?");
       $sentencia->execute(array($id));
       return $sentencia->fetch(PDO::FETCH_ASSOC);
-
   }
 
-  function InsertarPelicula($pelicula,$descripcion,$puntaje){
-    $sentencia = $this->db->prepare("INSERT INTO pelicula(nombre,descripcion,id_puntaje) VALUES(?,?,?)");
-    $sentencia->execute(array($pelicula,$descripcion,$puntaje));
+  private function subirImagen($imagen){
+       $destino_final = 'images/' . uniqid() . '.jpg';
+       move_uploaded_file($imagen, $destino_final);
+       return $destino_final;
+   }
+
+   function InsertarImagen($tempPath,$id){
+     $path = $this->subirImagen($tempPath);
+     $sentencia = $this->db->prepare("UPDATE pelicula SET imagen=? WHERE id_peliculas=?");
+     $sentencia->execute(array($path,$id));
+     $lastItem= $this->db->lastInsertId();
+     return $this->GetPelicula($lastItem);
+   }
+
+   function borrarImagen($rutaImg,$nuevoValor){
+     $sentencia = $this->db->prepare("UPDATE pelicula SET imagen=? WHERE imagen=?");
+     $sentencia->execute(array($nuevoValor,$rutaImg));
+   }
+
+  function InsertarPelicula($pelicula,$descripcion,$puntaje,$tempPath){
+    if ($tempPath != "") {
+      $path = $this->subirImagen($tempPath);
+    }else {
+      $path = $tempPath;
+    }
+    $sentencia = $this->db->prepare("INSERT INTO pelicula(nombre,descripcion,id_puntaje,imagen) VALUES(?,?,?,?)");
+    $sentencia->execute(array($pelicula,$descripcion,$puntaje,$path));
     $lastItem= $this->db->lastInsertId();
     return $this->GetPelicula($lastItem);
 
   }
 
-  function BorrarPelicula($idTarea){
+  function BorrarPelicula($idPelicula){
     $sentencia = $this->db->prepare("DELETE from pelicula where id_Peliculas=?");
-    $sentencia->execute(array($idTarea));
+    $sentencia->execute(array($idPelicula));
   }
 
   function EditarDatosPelicula($nombre,$descripcion,$puntaje,$id){
@@ -80,6 +103,15 @@ class PelisModel
     $sentencia = $this->db->prepare( "UPDATE personaje SET nombrePersonaje = ?, id_pelicula = ? where id_personaje=?");
     $sentencia->execute(array($nombre,$pelicula,$id));
   }
+
+  function filtrarPeliculas($nombre,$condicion){
+      $sentencia = $this->db->prepare( "SELECT * from pelicula ORDER BY $nombre $condicion");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
 
 
   }

@@ -37,8 +37,13 @@ class comentariosModel
   }
 
   function BorrarComentario($id){
-    $sentencia = $this->db->prepare("DELETE from comentario where id_comentario=?");
-    $sentencia->execute(array($id));
+    $comentario = $this->GetComentario($id);
+    if(isset($comentario)){
+      $sentencia = $this->db->prepare("DELETE from comentario where id_comentario=?");
+      $sentencia->execute(array($id));
+      return $comentario;
+
+    }
   }
 
   function EditarComentario($id_usuario,$id_pelicula,$comentario,$puntaje,$id){

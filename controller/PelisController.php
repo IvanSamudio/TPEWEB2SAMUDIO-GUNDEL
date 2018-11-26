@@ -28,12 +28,30 @@ class PelisController extends SecuredController
     $pelicula = $_POST["pelicula"];
     $descripcion = $_POST["descripcion"];
     $puntaje = $_POST["puntaje"];
-    $this->model->InsertarPelicula($pelicula,$descripcion,$puntaje);
+    $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+    $this->model->InsertarPelicula($pelicula,$descripcion,$puntaje, $rutaTempImagenes[0]);
     header(HOMEUSUARIO);
   }
 
+
+
   function BorrarPeliculas($param){
     $this->model->BorrarPelicula($param[0]);
+    header(HOMEUSUARIO);
+  }
+
+  function InsertImagen(){
+    $id = $_POST["id"];
+    $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
+    $this->model->InsertarImagen($rutaTempImagenes[0],$id);
+    header(HOMEUSUARIO);
+  }
+
+  function borrarImagen($param){
+    $imagen = $param[0]."/".$param[1];
+    $nuevoValor = "";
+    var_dump($imagen);
+    $this->model->borrarImagen($imagen,$nuevoValor);
     header(HOMEUSUARIO);
   }
 
@@ -87,6 +105,8 @@ class PelisController extends SecuredController
       $this->model->EditarDatosPersonaje($nombre,$pelicula,$id);
       header(HOMEUSUARIO);
     }
+
+  
 
 
 }

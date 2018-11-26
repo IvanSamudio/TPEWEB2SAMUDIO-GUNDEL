@@ -3,7 +3,7 @@ require_once  "./view/UsuarioView.php";
 require_once  "./model/UsuarioModel.php";
 require_once  "./Controller/SecuredController.php";
 
-class UsuarioController
+class UsuarioController extends SecuredController
 {
   private $view;
   private $model;
@@ -22,11 +22,7 @@ class UsuarioController
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }
 
-  function Registro(){
-    $Titulo='Registro';
-    $this->view->MostrarRegistrarse($Titulo);
-  }
-
+  
 
 
   function InsertUsuario(){

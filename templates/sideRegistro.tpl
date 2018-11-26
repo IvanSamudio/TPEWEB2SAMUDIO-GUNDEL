@@ -11,8 +11,8 @@
     <div class="">
       <h2>{$Message}</h2>
     </div>
-    <input type="submit" value="LOGIN" name="enviar" class="registrado">
-    <input type="reset" value="Restablecer" name="B2">
+    <input type="submit" value="ENTRAR" name="enviar" class="registrado">
+    <input type="reset" value="BORRAR DATOS" name="B2">
     </h3>
   </form>
 </div>

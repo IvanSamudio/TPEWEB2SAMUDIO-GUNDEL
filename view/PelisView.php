@@ -19,10 +19,11 @@ class PelisView
 
   }
 
-  function Mostrar($Titulo,$Pelicula){
+  function Mostrar($Titulo,$Pelicula,$personaje){
     $smarty = new Smarty();
     $smarty->assign('Titulo',$Titulo);
     $smarty->assign('Pelicula',$Pelicula);
+    $smarty->assign('Personaje',$personaje);
     $smarty->display('templates/tableVisitante.tpl');
   }
 

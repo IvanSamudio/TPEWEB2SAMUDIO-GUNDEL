@@ -29,8 +29,8 @@ if(isset($_GET['action'])){
             echo $controller->$metodo();
         }
     }else{
-      $controller =  new personajesController();
-      echo $controller->home();
+      $controller =  new visitanteController();
+      echo $controller->mostrarVisitante();
     }
 }
  ?>

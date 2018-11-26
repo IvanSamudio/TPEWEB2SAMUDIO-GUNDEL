@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2018 a las 17:33:33
+-- Tiempo de generación: 26-11-2018 a las 19:17:48
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `comentario` (
   `id_peliculas` tinyint(4) NOT NULL,
   `id_usuario` tinyint(4) NOT NULL,
-  `id_comentario` tinyint(4) NOT NULL,
+  `id_comentario` int(11) NOT NULL,
   `comentario` text NOT NULL,
-  `puntaje` int(5) NOT NULL
+  `puntaje` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -41,9 +41,10 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_peliculas`, `id_usuario`, `id_comentario`, `comentario`, `puntaje`) VALUES
-(1, 1, 1, 'BIEN NENE', 4),
-(5, 1, 3, 'PEDRO', 4),
-(7, 1, 4, 'BIEN PENDEJO', 3);
+(6, 1, 6, 'dasdas', 3),
+(4, 1, 7, 'sadsa', 3),
+(1, 1, 32, 'ME GUSTO', 5),
+(58, 1, 39, 'HAY QUE BONITO PAPEL', 5);
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,7 @@ INSERT INTO `comentario` (`id_peliculas`, `id_usuario`, `id_comentario`, `coment
 
 CREATE TABLE `pelicula` (
   `id_peliculas` tinyint(4) NOT NULL,
+  `imagen` text NOT NULL,
   `nombre` varchar(400) NOT NULL,
   `descripcion` varchar(400) NOT NULL,
   `id_puntaje` int(10) NOT NULL
@@ -62,14 +64,19 @@ CREATE TABLE `pelicula` (
 -- Volcado de datos para la tabla `pelicula`
 --
 
-INSERT INTO `pelicula` (`id_peliculas`, `nombre`, `descripcion`, `id_puntaje`) VALUES
-(1, 'viernes 13', 'buena', 9),
-(4, 'Viernes 13 part 2', 'Buena', 9),
-(5, 'Viernes 13 part 3', 'Buena', 7),
-(6, 'Viernes 13 part 4', 'Buena', 8),
-(7, 'Viernes 13 part 5', 'Buena', 9),
-(9, 'Viernes 13 part 5', 'Buena', 9),
-(10, 'viernes feriado', 'EXCELENTE', 10);
+INSERT INTO `pelicula` (`id_peliculas`, `imagen`, `nombre`, `descripcion`, `id_puntaje`) VALUES
+(1, 'images/5bf9244d0c0b5.jpg', 'viernes 13', 'BUENA', 9),
+(4, 'images/5bf9245b16191.jpg', 'Viernes 13 part 2', 'BUENA', 9),
+(5, 'images/5bf9246e2b428.jpg', 'Viernes 13 part 3', 'BUENA', 7),
+(6, 'images/5bf92481d1003.jpg', 'Viernes 13 part 4', 'BUENA', 8),
+(7, 'images/5bf924ab095f5.jpg', 'Viernes 13 part 5', 'MALA', 4),
+(33, 'images/5bf925c176204.jpg', 'Viernes 13 part 6', 'EXCELENTE', 10),
+(34, 'images/5bf9332d65c42.jpg', 'viernes 13 part 7', 'BUENA', 7),
+(42, 'images/5bf9335ed9c24.jpg', 'viernes 13 part 8', 'BUENA', 8),
+(43, 'images/5bf948c64732b.jpg', 'viernes 13 part 9', 'MALA', 2),
+(44, 'images/5bf9491b42706.jpg', 'JASON X', 'BUENA', 7),
+(45, 'images/5bf9560737443.jpg', 'Freddy vs. Jason', 'BUENA', 7),
+(48, 'images/5bf96399372e6.jpg', 'viernes 13 2009', 'EXCELENTE', 10);
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,7 @@ INSERT INTO `pelicula` (`id_peliculas`, `nombre`, `descripcion`, `id_puntaje`) V
 
 CREATE TABLE `personaje` (
   `id_personaje` tinyint(4) NOT NULL,
+  `imagen` text NOT NULL,
   `nombrePersonaje` varchar(300) NOT NULL,
   `id_pelicula` tinyint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -87,9 +95,8 @@ CREATE TABLE `personaje` (
 -- Volcado de datos para la tabla `personaje`
 --
 
-INSERT INTO `personaje` (`id_personaje`, `nombrePersonaje`, `id_pelicula`) VALUES
-(1, 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1),
-(2, 'pepe', 10);
+INSERT INTO `personaje` (`id_personaje`, `imagen`, `nombrePersonaje`, `id_pelicula`) VALUES
+(1, '', 'Sra. Voorhees,\r\nAlice Hardy,\r\nBill Brown,\r\nJack Burrell/Marand,\r\nMarcie Cunningham/Stanler,\r\nBrenda Jones,\r\nNed Rubenstein,\r\nAnnie Phillips,\r\nSteve Christy,\r\nEnos,\r\nel loco Ralph,\r\nBarry Jackson,\r\nClaudette Hayes,\r\nJason Voorhees\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -100,15 +107,18 @@ INSERT INTO `personaje` (`id_personaje`, `nombrePersonaje`, `id_pelicula`) VALUE
 CREATE TABLE `usuario` (
   `id_usuario` tinyint(4) NOT NULL,
   `nombreUsuario` varchar(300) NOT NULL,
-  `pass` varchar(60) NOT NULL
+  `pass` varchar(60) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`) VALUES
-(1, 'Ivan', '$2y$10$YlR.NTGAYlqVNjORg/A2ceGlwtNv0pudn7pOZ33ID0FF1RAtQLBou');
+INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`, `admin`) VALUES
+(1, 'Ivan', '$2y$10$YlR.NTGAYlqVNjORg/A2ceGlwtNv0pudn7pOZ33ID0FF1RAtQLBou', 1),
+(7, 'JULIO', '$2y$10$1C4C/UWjzsml4rSwTFmn4.MBK//wTClUSl5mxVEc6XOI/v3IkTNDe', 0),
+(8, 'pedro', '$2y$10$/ArSqMXoEbZd7xf5Ad5cMuibeUgHYa8y78iMuBJunQ5eY.KzoZb4u', 0);
 
 --
 -- Índices para tablas volcadas
@@ -119,7 +129,6 @@ INSERT INTO `usuario` (`id_usuario`, `nombreUsuario`, `pass`) VALUES
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD KEY `id_peliculas` (`id_peliculas`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
@@ -150,25 +159,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_peliculas` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_personaje` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -178,8 +187,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_peliculas`) REFERENCES `pelicula` (`id_peliculas`),
-  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `personaje`

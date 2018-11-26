@@ -28,7 +28,14 @@
         </div>
         <br><br><br>
         </div>
+        <h1>COMENTARIOS</h1>
+        <div class="comments">
+
+        </div>
       </div>
+
+      <br>
+
     </section>
 
 {include file="footer.tpl"}

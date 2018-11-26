@@ -6,7 +6,11 @@
       <form class="formulario" action="Editado/{$Pelicula['id_peliculas']}" method="post">
 
         <input type="text" name="pelicula" value="{$Pelicula['nombre']}" class="descripcion" >
-        <input type="text" name="descripcion" value="{$Pelicula['descripcion']}" class="descripcion" >
+        <select class="opciones" name="descripcion" >
+                <option  value="MALA">MALA</option>
+                <option  value="BUENA">BUENA</option>
+                <option  value="EXCELENTE">EXCELENTE</option>
+        </select>
         <input type="number" min="0" max="10" name="puntaje" value="{$Pelicula['id_puntaje']}" class="puntaje" >
         <br>
         <br>

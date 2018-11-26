@@ -21,7 +21,6 @@ function load() {
       fetch(url+"/"+id)
       .then(response => response.json())
       .then(jsonComments => {
-          console.log(jsonComments);
           mostrarComments(jsonComments);
       })
   }
@@ -33,8 +32,10 @@ function load() {
       }
       let html = templateComments(context);
       document.querySelector(".comments").innerHTML = html;
-      document.querySelector(".borrarComentario").addEventListener("click", borrarComentario);
-      console.log("LISTO");
+      let boton = document.querySelectorAll(".borrarComentario");
+      for (var i = 0; i < boton.length; i++) {
+        boton[i].addEventListener("click", borrarComentario);
+      }     
   }
 
   function enviarComentario() {
@@ -59,8 +60,7 @@ function load() {
     }
 
     function borrarComentario() {
-      let idBorrar = document.querySelector(".borrarComentario").id;
-      console.log(idBorrar);
+      let idBorrar = this.id;
       let urlBorrar = url+"/"+idBorrar;
       fetch(urlBorrar, {
             method: 'DELETE',
